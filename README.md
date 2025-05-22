@@ -1,6 +1,3 @@
-Got it! Here's the **plain text** version of the `README.md` that you can copy and paste directly:
-
----
 
 **Soil Image Classification – IIT Ropar x Annam.ai Hackathon 2025**
 
