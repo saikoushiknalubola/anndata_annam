@@ -1,0 +1,15 @@
+Hello, and welcome to the demo of my soil classification project.
+
+In this project, I worked on classifying soil images into four categories: Alluvial Soil, Black Soil, Clay Soil, and Red Soil. The main objective was to predict the soil type from image data using machine learning techniques.
+
+The dataset provided included a set of training images with known labels and a separate test set without labels. The training labels were available in a CSV file, and the test image IDs were listed separately.
+
+For feature extraction, I used a pre-trained ResNet18 model from PyTorch. I stripped off the final fully connected layer so the model would act purely as a feature extractor, generating fixed-length feature vectors from the images. Each image was resized to 224x224 pixels before feeding it into ResNet18.
+
+After extracting the features, I trained a Random Forest classifier to perform the actual classification. I chose this hybrid approach because it combines the strong feature extraction capabilities of deep learning with the interpretability and solid performance of classical machine learning models.
+
+To evaluate performance, I ran a 5-fold stratified cross-validation and achieved an average macro F1 score of about 0.955 — which shows that the model performed well and fairly across all soil types.
+
+Finally, I retrained the model on the full training dataset and generated predictions on the test set. I mapped the predicted labels back to the original soil type names using label encoding and prepared the final submission CSV.
+
+Thanks for following along with this demo! Let me know if you’d like to dive deeper into any part of the process.
