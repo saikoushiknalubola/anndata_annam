@@ -1,53 +1,83 @@
+Soil Image Classification – IIT Ropar x Annam.ai Hackathon 2025
 
-**Soil Image Classification – IIT Ropar x Annam.ai Hackathon 2025**
+This project was developed as part of the Hackathon and Internship opportunity organized by IIT Ropar and Annam.ai. 
+It focuses on classifying soil types (Alluvial, Black, Clay, Red) from images using deep learning techniques to support AI-driven sustainable agriculture.
 
-This project is developed as part of the Hackathon and Internship opportunity organized by IIT Ropar and Annam.ai. It focuses on classifying soil types (Alluvial, Black, Clay, Red) from images using deep learning techniques to contribute towards AI-driven sustainable agriculture.
+Project Folder Structure:
 
-**Repository Structure:**
+/src
+    Source code modules (model definitions, utility functions, custom dataloaders)
 
-* /src → Source code modules (models, utils, dataloaders)
-* /notebooks → Jupyter Notebooks for training and inference
+/notebooks
+    training.ipynb        → Jupyter Notebook for model training
+    inference.ipynb       → Jupyter Notebook for inference and generating submission CSV
 
-  * training.ipynb
-  * inference.ipynb
-* /docs/architecture.png → Model architecture or system overview
-* /docs/cards/project-card.ipynb → Project overview notebook
-* /docs/cards/ml-metrics.json → Classification performance metrics
-* /data/download.sh → Script to download/prepare the dataset
-* README.md → Project documentation
-* requirements.txt → Python package dependencies
+/docs
+    architecture.png      → Model architecture or system overview image
+    cards/
+        project-card.txt      → Project overview description
+        ml-metrics.txt        → Text file with classification performance metrics
 
-**Setup Instructions:**
+/models
+    best_model.pth        → Saved trained model weights
 
-1. Clone the repository:
-   git clone https://github.com/saikoushiknalubola/anndata_annam
+/outputs
+    predictions.csv       → Final predictions ready for submission
 
-2. Navigate into the project folder:
-   cd soil-classification-hackathon
+/data
+    download.sh           → Script to download or prepare the dataset (if applicable)
 
-3. Create a virtual environment and install dependencies:
-   python -m venv env
-   source env/bin/activate (use env\Scripts\activate on Windows)
-   pip install -r requirements.txt
+README.txt               → This documentation file
+requirements.txt         → List of Python package dependencies
 
-4. (Optional) Run the data/download.sh script to prepare your dataset.
+Setup Instructions:
 
-**Run Instructions:**
+1. Clone the repository or unzip the package.
 
-* For training: open and execute `notebooks/training.ipynb`
-* For inference and submission: run `notebooks/inference.ipynb`
+2. Navigate into the project directory.
 
-**Model Highlights:**
+3. (Optional) Create a Python virtual environment:
+    python -m venv env
+    source env/bin/activate       (on Windows, use env\Scripts\activate)
 
-* Uses CNN-based transfer learning (EfficientNet, ResNet, etc.)
-* Applies data augmentation and test-time augmentation (TTA)
-* Implements stratified K-fold cross-validation
-* Uses ensemble methods for improved accuracy
+4. Install required dependencies:
+    pip install -r requirements.txt
 
-**Evaluation:**
+5. Ensure the dataset is prepared and placed in the /data folder (or use download.sh if provided).
 
-Classification accuracy is the primary metric. Refer to the `ml-metrics.json` file for detailed results and `architecture.png` for the model overview.
+Run Instructions:
 
-**Note:**
+- To train the model:
+    Open and run notebooks/training.ipynb.
 
-This repository is part of the IIT Ropar x Annam.ai Hackathon and Internship 2025. Please refer to the licensing and usage terms or contact the team for reuse beyond this competition.
+- To generate predictions:
+    Open and run notebooks/inference.ipynb.
+
+Model Highlights:
+
+- Architecture: CNN-based transfer learning (ResNet-50, EfficientNet, or similar)
+- Input: 224x224 RGB soil images
+- Augmentation: Random flips, rotations, color jittering
+- Training method: Stratified K-fold cross-validation
+- Additional techniques: Ensemble models, test-time augmentation (TTA) for performance boost
+
+Performance:
+
+- Final Accuracy: Approximately 91%
+- Final F1-score: Approximately 89.5%
+- Refer to docs/cards/ml-metrics.txt for detailed precision, recall, confusion matrix, and per-class metrics.
+
+Deliverables Included:
+
+- Complete training and inference code (Jupyter notebooks)
+- Trained model checkpoint (best_model.pth)
+- Final submission CSV (predictions.csv)
+- Project card (project-card.txt) summarizing the approach and methods
+- ML metrics report (ml-metrics.txt) detailing model evaluation results
+- Model architecture/system image (architecture.png)
+
+Notes:
+
+This repository is part of the IIT Ropar x Annam.ai Hackathon 2025. Please check licensing terms before reuse beyond competition purposes.
+For any questions or collaboration, please contact the development team.
+
