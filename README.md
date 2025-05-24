@@ -1,83 +1,101 @@
-Soil Image Classification – IIT Ropar x Annam.ai Hackathon 2025
+<h1> Soil Classification using CNN Feature Extraction + Random Forest</h1>
 
-This project was developed as part of the Hackathon and Internship opportunity organized by IIT Ropar and Annam.ai. 
-It focuses on classifying soil types (Alluvial, Black, Clay, Red) from images using deep learning techniques to support AI-driven sustainable agriculture.
+<p>
+  This project was developed as part of the Hackathon and Internship opportunity organized by IIT Ropar and Annam.ai. It focuses on classifying soil types (Alluvial, Black, Clay, Red) from images using deep learning techniques to support AI-driven sustainable agriculture.
+</p>
 
-Project Folder Structure:
+<h2>🗂️ Dataset Structure</h2>
 
-/src
-    Source code modules (model definitions, utility functions, custom dataloaders)
+<pre><code>soil_classification-2025/
+├── train/
+│   ├── 0001.jpg
+│   └── ...
+├── test/
+│   ├── 2001.jpg
+│   └── ...
+├── train_labels.csv   # image_id, soil_type
+└── test_ids.csv       # image_id
+</code></pre>
 
-/notebooks
-    training.ipynb        → Jupyter Notebook for model training
-    inference.ipynb       → Jupyter Notebook for inference and generating submission CSV
+<h2>🧠 Methodology</h2>
 
-/docs
-    architecture.png      → Model architecture or system overview image
-    cards/
-        project-card.txt      → Project overview description
-        ml-metrics.txt        → Text file with classification performance metrics
+<h3>🔍 Feature Extraction</h3>
+<ul>
+  <li><strong>Model:</strong> Pretrained <code>ResNet-18</code> (ImageNet)</li>
+  <li><strong>Modification:</strong> Replace <code>fc</code> layer with <code>Identity()</code> to extract 512-D features</li>
+  <li><strong>Transform:</strong> Resize (224×224), convert to tensor</li>
+</ul>
 
-/models
-    best_model.pth        → Saved trained model weights
+<h3>🎯 Classification</h3>
+<ul>
+  <li><strong>Model:</strong> Random Forest Classifier</li>
+  <li><strong>Validation:</strong> Stratified 5-Fold Cross-Validation</li>
+  <li><strong>Metric:</strong> Macro F1-Score</li>
+</ul>
 
-/outputs
-    predictions.csv       → Final predictions ready for submission
+<h2>🏁 How to Run</h2>
 
-/data
-    download.sh           → Script to download or prepare the dataset (if applicable)
+<h3>✅ Requirements</h3>
+<pre><code>pip install torch torchvision scikit-learn pandas numpy tqdm pillow</code></pre>
 
-README.txt               → This documentation file
-requirements.txt         → List of Python package dependencies
+<h3>▶️ Run Pipeline</h3>
+<ol>
+  <li>Clone the repo:
+    <pre><code>git clone https://github.com/saikoushiknalubola/anndata_annam.git
+cd anndata_annam</code></pre>
+  </li>
+  <li>Place the <code>soil_classification-2025</code> folder in the project root.</li>
+  <li>Run the script:
+    <pre><code>python training.ipynb</code></pre>
+  </li>
+</ol>
 
-Setup Instructions:
+<h2>📊 Performance</h2>
 
-1. Clone the repository or unzip the package.
+<h3>🧪 Fold-wise F1 Scores</h3>
+<table>
+  <tr><th>Fold</th><th>Macro F1 Score</th></tr>
+  <tr><td>1</td><td>0.94</td></tr>
+  <tr><td>2</td><td>0.94</td></tr>
+  <tr><td>3</td><td>0.95</td></tr>
+  <tr><td>4</td><td>0.95</td></tr>
+  <tr><td>5</td><td>0.99</td></tr>
+  <tr><td><strong>Avg</strong></td><td><strong>0.955</strong></td></tr>
+</table>
 
-2. Navigate into the project directory.
+<div class="highlight">
+✅ <strong>Public Leaderboard Score:</strong> 1.0000<br/>
+</div>
 
-3. (Optional) Create a Python virtual environment:
-    python -m venv env
-    source env/bin/activate       (on Windows, use env\Scripts\activate)
+<h2>📁 Output</h2>
+<ul>
+  <li><code>submission.csv</code>: Final test set predictions</li>
+  <li>Console: Fold-wise classification reports and average F1</li>
+</ul>
 
-4. Install required dependencies:
-    pip install -r requirements.txt
+<h2>📌 Notes</h2>
+<ul>
+  <li>ResNet weights loaded manually </li>
+  <li>End-to-end CNN fine-tuning can be explored for large datasets</li>
+</ul>
 
-5. Ensure the dataset is prepared and placed in the /data folder (or use download.sh if provided).
+<h2>🤝 Acknowledgements</h2>
+<ul>
+  <li>Dataset provided by competition organizers</li>
+  <li>ResNet model from PyTorch Model Zoo</li>
+</ul>
 
-Run Instructions:
+<h2>👨‍💻 Author</h2>
+<p><strong>Saikoushik Nalubola</strong><br/>
+</p>
 
-- To train the model:
-    Open and run notebooks/training.ipynb.
+<h2>📬 Contact</h2>
+<ul>
+  <li>Email: <code>saikoushiknalubola@gmail.com</code></li>
+</ul>
 
-- To generate predictions:
-    Open and run notebooks/inference.ipynb.
+<h2>⚖️ License</h2>
+<p>This project is licensed under the <a href="#">MIT License</a>.</p>
 
-Model Highlights:
-
-- Architecture: CNN-based transfer learning (ResNet-50, EfficientNet, or similar)
-- Input: 224x224 RGB soil images
-- Augmentation: Random flips, rotations, color jittering
-- Training method: Stratified K-fold cross-validation
-- Additional techniques: Ensemble models, test-time augmentation (TTA) for performance boost
-
-Performance:
-
-- Final Accuracy: Approximately 91%
-- Final F1-score: Approximately 89.5%
-- Refer to docs/cards/ml-metrics.txt for detailed precision, recall, confusion matrix, and per-class metrics.
-
-Deliverables Included:
-
-- Complete training and inference code (Jupyter notebooks)
-- Trained model checkpoint (best_model.pth)
-- Final submission CSV (predictions.csv)
-- Project card (project-card.txt) summarizing the approach and methods
-- ML metrics report (ml-metrics.txt) detailing model evaluation results
-- Model architecture/system image (architecture.png)
-
-Notes:
-
-This repository is part of the IIT Ropar x Annam.ai Hackathon 2025. Please check licensing terms before reuse beyond competition purposes.
-For any questions or collaboration, please contact the development team.
-
+</body>
+</html>
