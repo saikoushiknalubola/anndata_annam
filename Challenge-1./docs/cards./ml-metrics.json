@@ -1,1 +1,15 @@
+{
+  "_comment": "This JSON file contains the ml-metrics",
+  "Name": "Annam.ai",
+  "Kaggle Username": "saikoushiknalubola56",
+  "Team Name": "anndata",
+  "f1 scores": {
+    "_comment": "Here are the class-wise averaged F1 scores across 5 folds",
+    "alluvial soil": 0.958,
+    "black soil": 0.956,
+    "clay soil": 0.96,
+    "red soil": 0.948
+  },
+  "average f1": 0.955
+}
 
